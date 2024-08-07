@@ -4,11 +4,16 @@ const morgan = require('morgan');
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const colors = require('colors')
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
+const connectDB = require("./config/db");
 
 
 // dotenv
 dotenv.config()
+
+// mongo connection
+connectDB()
+
 
 // res object
 const app = express()
