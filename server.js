@@ -6,9 +6,11 @@ const bodyParser = require('body-parser')
 const colors = require('colors')
 const dotenv = require('dotenv');
 const connectDB = require("./config/db");
+const errorHandler = require("./middlewares/errorMiddleware");
+
 
 // routes path
-const authRoutes = require('./routes/authRoutes')
+const authRoutes = require('./routes/authRoutes');
 
 // dotenv
 dotenv.config()
@@ -25,6 +27,7 @@ app.use(cors())
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(morgan('dev'))
 app.use(express.json())
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 8080
 
